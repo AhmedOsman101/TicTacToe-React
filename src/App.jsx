@@ -1,10 +1,14 @@
 import "./App.css";
 import Board from "./Components/Board";
+import StatsBar from "./Components/StatsBar";
 
 function App() {
     return (
         <>
-            <Board />
+            <div className="container">
+                <StatsBar />
+                <Board />
+            </div>
         </>
     );
 }

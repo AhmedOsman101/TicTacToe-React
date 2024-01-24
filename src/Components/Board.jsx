@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Cell from "./Cell";
 
 const Board = () => {
@@ -8,17 +8,14 @@ const Board = () => {
     const [OLocations, setOLocations] = useState([]);
 
     const winningCombos = [
-        // Horizontal
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        // Vertical
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        // Diagonal
-        [0, 4, 8],
-        [2, 4, 6],
+        [0, 1, 2], // Top row
+        [3, 4, 5], // Middle row
+        [6, 7, 8], // Bottom row
+        [0, 3, 6], // Left column
+        [1, 4, 7], // Middle column
+        [2, 5, 8], // Right column
+        [0, 4, 8], // Main diagonal
+        [2, 4, 6], // Counter diagonal
     ];
 
     const checkWinner = () => {
@@ -40,7 +37,7 @@ const Board = () => {
     };
 
     const checkDraw = () => {
-        if (XLocations.length + OLocations.length === 9) {
+        if (XLocations.length + OLocations.length === 9 && !checkWinner()) {
             return true;
         }
     };
@@ -56,7 +53,6 @@ const Board = () => {
         setTurn((prev) => !prev);
     };
 
-    useEffect(() => {}, [board]);
     return (
         <>
             <div className="board">

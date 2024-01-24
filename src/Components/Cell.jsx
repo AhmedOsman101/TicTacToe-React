@@ -5,8 +5,8 @@ const Cell = ({ item, Click }) => {
     return (
         <>
             <div className="cell" onClick={Click}>
-                {item == "X" ? <XElement /> : ""}
-                {item == "O" ? <OElement /> : ""}
+                {item === "X" && <XElement />}
+                {item === "O" && <OElement />}
             </div>
         </>
     );

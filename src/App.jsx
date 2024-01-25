@@ -6,7 +6,6 @@ import { GameStateContextProvider } from "./Context/GameStateContext";
 function App() {
     return (
         <>
-            {" "}
             <GameStateContextProvider>
                 <div className="container">
                     <Routes>

@@ -1,6 +1,5 @@
 import Board from "./Board";
 import StatsBar from "./StatsBar";
-import { GameStateContextProvider } from "../Context/GameStateContext";
 import { useGameState } from "../Hooks/useGameState";
 const Game = () => {
     const { setGameState } = useGameState();

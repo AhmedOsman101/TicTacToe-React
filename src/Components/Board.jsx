@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Cell from "./Cell";
 import { useGameState } from "../Hooks/useGameState";
 

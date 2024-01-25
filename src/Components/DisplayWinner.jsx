@@ -1,4 +1,3 @@
-import React from "react";
 import { useGameState } from "../Hooks/useGameState";
 import XElement from "./XElement";
 import OElement from "./OElement";

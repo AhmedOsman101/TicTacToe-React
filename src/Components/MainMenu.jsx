@@ -16,11 +16,17 @@ const MainMenu = () => {
                 <div id="selectSide">
                     <h3>select game mode</h3>
                     <div className="btn-group" id="SGMBtns">
-                        <button onClick={() => navigate("/GameVsAi/")}>
+                        <button
+                            onClick={() =>
+                                navigate("/TicTacToe-React/GameVsAi/")
+                            }>
                             <span className="fa-desktop"></span>
                             <h4>player vs computer</h4>
                         </button>
-                        <button onClick={() => navigate("/GameVsPlayer/")}>
+                        <button
+                            onClick={() =>
+                                navigate("/TicTacToe-React/GameVsPlayer/")
+                            }>
                             <span className="fa-user"></span>
                             <h4>player vs player</h4>
                         </button>

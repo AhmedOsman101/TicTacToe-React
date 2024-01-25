@@ -1,4 +1,4 @@
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const MainMenu = () => {
     const navigate = useNavigate();
     const decideGameMode = () => {
@@ -16,17 +16,11 @@ const MainMenu = () => {
                 <div id="selectSide">
                     <h3>select game mode</h3>
                     <div className="btn-group" id="SGMBtns">
-                        <button
-                            onClick={() =>
-                                navigate("/TicTacToe-React/GameVsAi/")
-                            }>
+                        <button onClick={() => navigate("/GameVsAi/")}>
                             <span className="fa-desktop"></span>
                             <h4>player vs computer</h4>
                         </button>
-                        <button
-                            onClick={() =>
-                                navigate("/TicTacToe-React/GameVsPlayer/")
-                            }>
+                        <button onClick={() => navigate("/GameVsPlayer/")}>
                             <span className="fa-user"></span>
                             <h4>player vs player</h4>
                         </button>

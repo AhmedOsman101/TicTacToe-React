@@ -12,13 +12,13 @@ const ChooseDifficulty = () => {
                     <div className="btn-group" id="SGMBtns">
                         <button
                             onClick={() =>
-                                navigate("/TicTacToe-React/GameVsAi/Beginner")
+                                navigate("/GameVsAi/Beginner")
                             }>
                             <h4>Beginner 🤙🏻</h4>
                         </button>
                         <button
                             onClick={() =>
-                                navigate("/TicTacToe-React/GameVsAi/Advanced")
+                                navigate("/GameVsAi/Advanced")
                             }>
                             <h4>Hardcore 💀</h4>
                         </button>

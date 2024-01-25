@@ -3,7 +3,7 @@ const BackToMenu = () => {
     const navigate = useNavigate();
     return (
         <>
-            <button onClick={() => navigate("/TicTacToe-React/")}>
+            <button onClick={() => navigate("/")}>
                 <h4>Back To Main Menu</h4>
             </button>
         </>

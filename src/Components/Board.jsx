@@ -1,10 +1,8 @@
-import { useEffect } from "react";
 import Cell from "./Cell";
 import { useGameState } from "../Hooks/useGameState";
-import { checkWinner, checkDraw } from "./gameLogic"; // Import the game logic functions
 
 const Board = ({ handleClick }) => {
-    const { gameState, setGameState } = useGameState();
+    const { gameState } = useGameState();
 
     return (
         <>

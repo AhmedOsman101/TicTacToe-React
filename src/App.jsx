@@ -1,17 +1,20 @@
 import "./App.css";
-import Board from "./Components/Board";
-import StatsBar from "./Components/StatsBar";
+import Game from "./Components/GameVsPlayer";
+import MainMenu from "./Components/MainMenu";
+import { Routes, Route } from "react-router-dom";
 import { GameStateContextProvider } from "./Context/GameStateContext";
-
 function App() {
     return (
         <>
-            <div className="container">
-                <GameStateContextProvider>
-                    <StatsBar />
-                    <Board />
-                </GameStateContextProvider>
-            </div>
+            {" "}
+            <GameStateContextProvider>
+                <div className="container">
+                    <Routes>
+                        <Route path="/GameVsPlayer/" element={<Game />} />
+                        <Route path="/" element={<MainMenu />} />
+                    </Routes>
+                </div>
+            </GameStateContextProvider>
         </>
     );
 }

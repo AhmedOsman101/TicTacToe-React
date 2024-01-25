@@ -14,6 +14,8 @@
     box-sizing: border-box;
     transition: all 250ms ease-out;
     text-transform: capitalize;
+    text-align: center;
+    text-decoration: none;
 }
 
 body {
@@ -196,7 +198,9 @@ button:hover {
 }
 
 #selectSide {
-    gap: 1rem;
+    display: grid;
+    place-items: center;
+    gap: 3rem;
 }
 
 [data-side] {

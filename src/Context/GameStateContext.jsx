@@ -7,9 +7,12 @@ export const GameStateContextProvider = ({ children }) => {
         XScore: 0,
         OScore: 0,
         XTurn: true,
+        XLocations: [],
+        OLocations: [],
         winner: false,
         isDraw: false,
         gameEnded: false,
+        board: Array(9).fill(false),
     });
 
     return (

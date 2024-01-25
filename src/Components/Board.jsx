@@ -3,9 +3,6 @@ import Cell from "./Cell";
 import { useGameState } from "../Hooks/useGameState";
 
 const Board = () => {
-    const [board, setBoard] = useState(Array(9).fill(false));
-    const [XLocations] = useState([]);
-    const [OLocations] = useState([]);
     const { gameState, setGameState } = useGameState();
 
     const winningCombos = [
@@ -18,20 +15,20 @@ const Board = () => {
         [0, 4, 8], // Main diagonal
         [2, 4, 6], // Counter diagonal
     ];
-
-    const checkWinner = () => {
-        console.log(XLocations);
-        console.log(OLocations);
-        if (gameState.winner) return;
-
-        const XResults = winningCombos.map((combo) => {
+    const checkCombo = (array) => {
+        return winningCombos.some((combo) => {
             return (
-                XLocations.every((location) => combo.includes(location)) &&
-                XLocations.length === combo.length
+                combo.every((item) => array.includes(item)) && combo.length >= 3
             );
         });
+    };
 
-        if (XResults.includes(true)) {
+    const checkWinner = () => {
+        if (gameState.winner) return true;
+
+        const XResults = checkCombo(gameState.XLocations);
+
+        if (XResults) {
             setGameState((prev) => {
                 return {
                     ...prev,
@@ -40,16 +37,12 @@ const Board = () => {
                     gameEnded: true,
                 };
             });
+            return true;
         }
 
-        const OResults = winningCombos.map((combo) => {
-            return (
-                OLocations.every((location) => combo.includes(location)) &&
-                OLocations.length === combo.length
-            );
-        });
+        const OResults = checkCombo(gameState.OLocations);
 
-        if (OResults.includes(true)) {
+        if (OResults) {
             setGameState((prev) => {
                 return {
                     ...prev,
@@ -58,12 +51,16 @@ const Board = () => {
                     gameEnded: true,
                 };
             });
+            return true;
         }
     };
 
     const checkDraw = () => {
         if (gameState.winner || gameState.isDraw) return;
-        if (XLocations.length + OLocations.length === 9 && !gameState.winner) {
+        if (
+            gameState.XLocations.length + gameState.OLocations.length === 9 &&
+            !gameState.winner
+        ) {
             setGameState((prev) => {
                 return {
                     ...prev,
@@ -73,33 +70,34 @@ const Board = () => {
                     gameEnded: true,
                 };
             });
+            return true;
         }
     };
 
     const handleClick = (e, index) => {
-        if (gameState.gameEnded || board[index]) {
+        if (gameState.gameEnded || gameState.board[index]) {
             e.preventDefault();
             e.stopPropagation();
             return;
         }
-        let newBoard = [...board];
+        let newBoard = [...gameState.board];
         newBoard[index] = gameState.XTurn ? "X" : "O";
-        setBoard(newBoard);
-        gameState.XTurn ? XLocations.push(index) : OLocations.push(index);
+        gameState.XTurn
+            ? gameState.XLocations.push(index)
+            : gameState.OLocations.push(index);
         setGameState((prev) => {
-            return { ...prev, XTurn: !prev.XTurn };
+            return { ...prev, XTurn: !prev.XTurn, board: newBoard };
         });
     };
 
     useEffect(() => {
-        checkWinner();
-        checkDraw();
-    }, [board]);
+        if (!checkWinner()) checkDraw();
+    }, [gameState]);
 
     return (
         <>
             <div className="board">
-                {board.map((cell, i) => (
+                {gameState.board.map((cell, i) => (
                     <Cell
                         key={i}
                         Click={(e) => handleClick(e, i)}

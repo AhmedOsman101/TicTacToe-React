@@ -1,5 +1,6 @@
 import "./App.css";
-import Game from "./Components/GameVsPlayer";
+import GameVsPlayer from "./Components/GameVsPlayer";
+import GameVsAi from "./Components/GameVsAi";
 import MainMenu from "./Components/MainMenu";
 import { Routes, Route } from "react-router-dom";
 import { GameStateContextProvider } from "./Context/GameStateContext";
@@ -9,7 +10,11 @@ function App() {
             <GameStateContextProvider>
                 <div className="container">
                     <Routes>
-                        <Route path="/GameVsPlayer/" element={<Game />} />
+                        <Route
+                            path="/GameVsPlayer/"
+                            element={<GameVsPlayer />}
+                        />
+                        <Route path="/GameVsAi/" element={<GameVsAi />} />
                         <Route path="/" element={<MainMenu />} />
                     </Routes>
                 </div>

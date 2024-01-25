@@ -15,6 +15,12 @@ const Board = () => {
         [0, 4, 8], // Main diagonal
         [2, 4, 6], // Counter diagonal
     ];
+
+    /**
+     * Checks if the given array contains any winning combinations.
+     * @param {{Array}} array The array to check for winning combinations.
+     * @returns {{boolean}} True if a winning combination is found, false otherwise.
+     */
     const checkCombo = (array) => {
         return winningCombos.some((combo) => {
             return (
@@ -23,6 +29,10 @@ const Board = () => {
         });
     };
 
+    /**
+     * Checks if there is a winner in the current game state.
+     * @returns {boolean} True if there is a winner, false otherwise.
+     */
     const checkWinner = () => {
         if (gameState.winner) return true;
 
@@ -55,6 +65,10 @@ const Board = () => {
         }
     };
 
+    /**
+     * Checks if the game has ended in a draw and updates the game state accordingly.
+     * @returns {boolean}  Returns true if the game has ended in a draw, false otherwise.
+     */
     const checkDraw = () => {
         if (gameState.winner || gameState.isDraw) return;
         if (
@@ -74,8 +88,24 @@ const Board = () => {
         }
     };
 
+    /**
+     * Checks if a specific move on the board is available.
+     *
+     * @param {Array} board - The game board represented as an array.
+     * @param {number} move - The index of the move to check on the board.
+     * @returns {boolean}  Returns true if the move is available (board at the specified index is falsy), otherwise false.
+     */
+    const isAvailable = (board, move) => {
+        return !board[move];
+    };
+
+    /**
+     * Handles the click event on a game board cell.
+     * @param {Event} e - The click event object.
+     * @param {number} index - The index of the clicked cell.
+     */
     const handleClick = (e, index) => {
-        if (gameState.gameEnded || gameState.board[index]) {
+        if (gameState.gameEnded || !isAvailable(gameState.board, index)) {
             e.preventDefault();
             e.stopPropagation();
             return;

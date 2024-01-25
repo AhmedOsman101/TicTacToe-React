@@ -18,7 +18,9 @@ const MainMenu = () => {
                     <div className="btn-group" id="SGMBtns">
                         <button>
                             <span className="fa-desktop"></span>
-                            <h4>player vs computer</h4>
+                            <h4>
+                                <Link to="/GameVsAi/">player vs computer</Link>
+                            </h4>
                         </button>
                         <button>
                             <span className="fa-user"></span>

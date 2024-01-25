@@ -20,7 +20,6 @@ export const checkCombo = (array) => {
     });
 };
 
-
 /**
  * Checks if there is a winner in the current game state and updates the game
  * state accordingly.
@@ -89,7 +88,6 @@ export const checkDraw = (gameState, setGameState) => {
     return false;
 };
 
-
 /**
  * Checks if a move is available on a given board.
  * @param {Array} board - The current state of the board.
@@ -100,6 +98,11 @@ export const isAvailable = (board, move) => {
     return !board[move];
 };
 
+/**
+ * Generates a random move for the AI player in a tic-tac-toe game.
+ * @param {object} gameState - The current state of the game.
+ * @param {function} setGameState - A function to update the game state.
+ */
 export const randomAi = (gameState, setGameState) => {
     console.table({ gameEnded: gameState.gameEnded, winner: gameState.winner });
     const isBoardFull =
@@ -132,7 +135,11 @@ export const randomAi = (gameState, setGameState) => {
         return;
 };
 
-export const resetGame = (setGameState) => {
+/**
+ * Resets the game state to its initial values.
+ * @param {function} setGameState - The function to update the game state.
+ */
+export const Reset = (setGameState) => {
     setGameState((prev) => {
         return {
             ...prev,

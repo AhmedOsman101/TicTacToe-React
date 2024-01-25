@@ -14,7 +14,14 @@ function App() {
                             path="/GameVsPlayer/"
                             element={<GameVsPlayer />}
                         />
-                        <Route path="/GameVsAi/" element={<GameVsAi />} />
+                        <Route
+                            path="/GameVsAi/Beginner"
+                            element={<GameVsAi />}
+                        />
+                        <Route
+                            path="/GameVsAi/Advanced"
+                            element={<GameVsAi />}
+                        />
                         <Route path="/" element={<MainMenu />} />
                     </Routes>
                 </div>

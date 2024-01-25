@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"; // Import useEffect
-import { GameStateContext } from "../context/GameStateContext";
+import { GameStateContext } from "../Context/GameStateContext";
 import { playerMove, AIMove, isWinner, isDraw } from "./gameLogic";
 import Board from "./Board";
 import StatsBar from "./StatsBar";
@@ -9,9 +9,8 @@ const GameVsMiniMax = () => {
 
     const handleClick = (e, index) => {
         e.preventDefault();
-        if (gameState.gameEnded) {
-            return;
-        }
+        if (gameState.gameEnded) return;
+
         if (gameState.XTurn) {
             let newBoard = playerMove(gameState.board, index);
             if (newBoard) {
@@ -63,7 +62,6 @@ const GameVsMiniMax = () => {
             });
         }
         console.table(gameState);
-        
     }, [gameState]);
 
     return (

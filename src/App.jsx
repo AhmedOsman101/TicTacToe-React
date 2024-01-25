@@ -5,6 +5,7 @@ import MainMenu from "./Components/MainMenu";
 import { Routes, Route } from "react-router-dom";
 import { GameStateContextProvider } from "./Context/GameStateContext";
 import GameVsMiniMax from "./Components/GameVsMiniMax";
+import ChooseDifficulty from "./Components/ChooseDifficulty ";
 function App() {
     return (
         <>
@@ -14,6 +15,10 @@ function App() {
                         <Route
                             path="/GameVsPlayer/"
                             element={<GameVsPlayer />}
+                        />
+                        <Route
+                            path="/GameVsAi/"
+                            element={<ChooseDifficulty />}
                         />
                         <Route
                             path="/GameVsAi/Beginner"

@@ -5,6 +5,7 @@ import { playerMove, randomAi, isWinner, isDraw } from "./gameLogic";
 /* Assets */
 import Board from "./Board";
 import StatsBar from "./StatsBar";
+import BackToMenu from "./BackToMenu";
 
 // Main game component
 const GameVsAi = () => {
@@ -82,6 +83,7 @@ const GameVsAi = () => {
                     <span className="fa-desktop"></span>
                     <h4>Play Again !</h4>
                 </button>
+                <BackToMenu />
             </div>
         </>
     );

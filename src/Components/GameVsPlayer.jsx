@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
-import { GameStateContext } from "../context/GameStateContext";
+import { GameStateContext } from "../Context/GameStateContext";
 import { playerMove, isWinner, isDraw } from "./gameLogic";
 import Board from "./Board";
+import BackToMenu from "./BackToMenu";
 import StatsBar from "./StatsBar";
 
 const GameVsPlayer = () => {
@@ -68,6 +69,7 @@ const GameVsPlayer = () => {
                     <span className="fa-user"></span>
                     <h4>Play Again !</h4>
                 </button>
+                <BackToMenu />
             </div>
         </>
     );

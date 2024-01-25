@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"; // Import useEffect
 import { GameStateContext } from "../Context/GameStateContext";
 import { playerMove, AIMove, isWinner, isDraw } from "./gameLogic";
 import Board from "./Board";
+import BackToMenu from "./BackToMenu";
 import StatsBar from "./StatsBar";
 
 const GameVsMiniMax = () => {
@@ -73,6 +74,7 @@ const GameVsMiniMax = () => {
                     <span className="fa-desktop"></span>
                     <h4>Play Again !</h4>
                 </button>
+                <BackToMenu />
             </div>
         </>
     );

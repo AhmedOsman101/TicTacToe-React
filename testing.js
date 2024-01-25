@@ -10,9 +10,8 @@ export const WINNING_COMBOS = [
     [2, 4, 6], // Counter diagonal
 ];
 
-// Positive and negative infinity - constants because they don't change
-const POS_INF = Number.POSITIVE_INFINITY;
-const NEGA_INF = Number.NEGATIVE_INFINITY;
+const POS_INF = Number.POSITIVE_INFINITY; // positive infinity
+const NEGA_INF = Number.NEGATIVE_INFINITY; //negative infinity
 
 // The game board - let because it changes
 let board = Array(9).fill(false);
@@ -25,10 +24,10 @@ const makeMove = (move, side) => {
         let newBoard = [...board];
         newBoard[move] = side;
         board = newBoard;
+        return board;
     }
     if (isWinner(board, side)) return `${side} is the winner!`;
     if (isDraw(board)) return "Draw";
-    return board;
 };
 
 const isWinner = (board, side) => {
@@ -55,7 +54,7 @@ const isDraw = (board) => {
 };
 
 const playerMove = (move) => {
-    makeMove(move, "X");
+    return makeMove(move, "X");
 };
 
 const AIMove = (board) => {
@@ -73,20 +72,21 @@ const AIMove = (board) => {
             }
         }
     });
-    makeMove(bestMove, "O");
+    makeMove(bestMove, "O"); // Update the board with the best move
 };
 
 const minimax = (board, isMaximizing) => {
-    if (isWinner(board, "X")) return -100;
-    if (isWinner(board, "O")) return 100;
+    if (isWinner(board, "X")) return -1;
+    if (isWinner(board, "O")) return 1;
     if (isDraw(board)) return 0;
+
     if (isMaximizing) {
         let bestScore = NEGA_INF;
         board.forEach((cell, index) => {
             if (!cell) {
-                board[index] = "O";
-                const score = minimax(board, false);
-                board[index] = false;
+                let newBoard = [...board];
+                newBoard[index] = "O";
+                const score = minimax(newBoard, false); // Corrected parameter
                 if (score > bestScore) bestScore = score;
             }
         });
@@ -95,9 +95,9 @@ const minimax = (board, isMaximizing) => {
         let bestScore = POS_INF;
         board.forEach((cell, index) => {
             if (!cell) {
-                board[index] = "X";
-                const score = minimax(board, false);
-                board[index] = false;
+                let newBoard = [...board];
+                newBoard[index] = "X";
+                const score = minimax(newBoard, true); // Corrected parameter
                 if (score < bestScore) bestScore = score;
             }
         });
@@ -105,9 +105,9 @@ const minimax = (board, isMaximizing) => {
     }
 };
 
-// playerMove(5);
+// playerMove(0);
 // AIMove(board);
-// playerMove(1);
+// playerMove(3);
 // AIMove(board);
 // playerMove(3);
 // AIMove(board);

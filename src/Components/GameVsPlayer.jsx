@@ -1,50 +1,70 @@
-/* Dependencies */
-import { useEffect } from "react";
-import { useGameState } from "../Hooks/useGameState";
-import { Reset, isAvailable, checkWinner, checkDraw } from "./gameLogic";
-/* Assets */
+import { useContext, useEffect } from "react";
+import { GameStateContext } from "../context/GameStateContext";
+import { playerMove, isWinner, isDraw } from "./gameLogic";
 import Board from "./Board";
 import StatsBar from "./StatsBar";
+
 const GameVsPlayer = () => {
-    const { gameState, setGameState } = useGameState();
+    const { gameState, dispatch } = useContext(GameStateContext);
+
     const handleClick = (e, index) => {
-        // If the game has ended or the cell is not available, ignore the click
-        if (gameState.gameEnded || !isAvailable(gameState.board, index)) {
-            e.preventDefault();
-            e.stopPropagation();
+        e.preventDefault();
+        const side = gameState.XTurn ? "X" : "O";
+        if (gameState.gameEnded) {
             return;
         }
-        let newBoard = [...gameState.board];
-        newBoard[index] = gameState.XTurn ? "X" : "O";
-        gameState.XTurn
-            ? gameState.XLocations.push(index)
-            : gameState.OLocations.push(index);
-        // Update the game state
-        setGameState((prev) => {
-            return {
-                ...prev,
-                XTurn: !prev.XTurn,
-                board: newBoard,
-            };
-        });
+        let newBoard = playerMove(gameState.board, index, side);
+        if (newBoard) {
+            dispatch({ type: "MAKE_MOVE", newBoard: newBoard });
+        }
     };
 
-    /**
-     * Check for a winner and update the game state accordingly. If there is no
-     * winner, it checks for a draw. If it is the AI's turn and there is no
-     * winner, it calls the randomAi function to make a move.
-     */
     useEffect(() => {
-        // If there's no winner, check for a draw
-        if (!checkWinner(gameState, setGameState))
-            checkDraw(gameState, setGameState);
-    }, [gameState]);
+        // If it's not X's turn and the game hasn't ended, make the AI's move
+        // Check for a winner or draw
+        const winner = isWinner(gameState.board, "X")
+            ? "X"
+            : isWinner(gameState.board, "O")
+            ? "O"
+            : false;
+        if (winner && winner !== gameState.winner) {
+            dispatch({ type: "END_GAME", winner: winner });
+            if (winner === "X") {
+                dispatch({
+                    type: "UPDATE_SCORES",
+                    XScore: 1,
+                    OScore: 0,
+                });
+            } else {
+                dispatch({
+                    type: "UPDATE_SCORES",
+                    XScore: 0,
+                    OScore: 1,
+                });
+            }
+        } else if (isDraw(gameState.board) && !gameState.isDraw) {
+            dispatch({ type: "DRAW" });
+            dispatch({
+                type: "UPDATE_SCORES",
+                XScore: 0.5,
+                OScore: 0.5,
+            });
+        }
+        console.table(gameState);
+    }, [
+        gameState.board,
+        gameState.XTurn,
+        gameState.gameEnded,
+        gameState.winner,
+        gameState.isDraw,
+    ]);
+
     return (
         <>
             <StatsBar />
             <Board handleClick={handleClick} />
             <div className="btn-group" id="SGMBtns">
-                <button onClick={() => Reset(setGameState)}>
+                <button onClick={() => dispatch({ type: "RESET_GAME" })}>
                     <span className="fa-user"></span>
                     <h4>Play Again !</h4>
                 </button>

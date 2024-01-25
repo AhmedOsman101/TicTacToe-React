@@ -46,7 +46,8 @@ body {
     cursor: pointer;
 }
 
-.cell:not(:empty) {
+.cell:not(:empty),
+.disabledCell {
     cursor: not-allowed;
 }
 

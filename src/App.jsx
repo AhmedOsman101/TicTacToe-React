@@ -1,13 +1,16 @@
 import "./App.css";
 import Board from "./Components/Board";
 import StatsBar from "./Components/StatsBar";
+import { GameStateContextProvider } from "./Context/GameStateContext";
 
 function App() {
     return (
         <>
             <div className="container">
-                <StatsBar />
-                <Board />
+                <GameStateContextProvider>
+                    <StatsBar />
+                    <Board />
+                </GameStateContextProvider>
             </div>
         </>
     );

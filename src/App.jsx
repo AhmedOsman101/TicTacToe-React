@@ -13,25 +13,22 @@ function App() {
                 <div className="container">
                     <Routes>
                         <Route
-                            path="/TicTacToe-React/GameVsPlayer/"
+                            path="/GameVsPlayer/"
                             element={<GameVsPlayer />}
                         />
                         <Route
-                            path="/TicTacToe-React/GameVsAi/"
+                            path="/GameVsAi/"
                             element={<ChooseDifficulty />}
                         />
                         <Route
-                            path="/TicTacToe-React/GameVsAi/Beginner"
+                            path="/GameVsAi/Beginner"
                             element={<GameVsAi />}
                         />
                         <Route
-                            path="/TicTacToe-React/GameVsAi/Advanced"
+                            path="/GameVsAi/Advanced"
                             element={<GameVsMiniMax />}
                         />
-                        <Route
-                            path="/TicTacToe-React/"
-                            element={<MainMenu />}
-                        />
+                        <Route path="/" element={<MainMenu />} />
                     </Routes>
                 </div>
             </GameStateContextProvider>

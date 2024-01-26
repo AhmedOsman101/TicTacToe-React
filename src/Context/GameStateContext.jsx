@@ -22,6 +22,8 @@ function gameReducer(state, action) {
             return { ...state, gameEnded: true, winner: action.winner };
         case "DRAW":
             return { ...state, isDraw: true, gameEnded: true };
+        case "BACK_TO_MENU":
+            return { ...initialState };
         case "RESET_GAME":
             return {
                 ...state,

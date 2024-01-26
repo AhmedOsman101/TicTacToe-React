@@ -16,21 +16,19 @@
     text-transform: capitalize;
     text-align: center;
     text-decoration: none;
-    /* overflow: hidden; */
 }
 html {
     height: 100%;
 }
 body {
     height: 100%;
-    /* display: grid;*/
+    min-height: 100%;
+    overflow: hidden;
     background-color: var(--dark-color);
-    /* Update the body styles to use flex for responsiveness */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100%;
 }
 /***** End Global styles *****/
 
@@ -48,7 +46,7 @@ body {
 
 /***** cell styles *****/
 .cell {
-    width: calc(20rem / 3);
+    width: calc(100% / 3);
     border: 1px solid var(--white-color);
     aspect-ratio: 1/1;
     display: grid;
@@ -78,13 +76,6 @@ body {
 }
 /***** End cell styles *****/
 
-/* .container {
-    display: grid;
-    place-items: center;
-    gap: 1.3rem;
-    padding-top: 2rem;
-} */
-
 /* Update the container styles */
 .container {
     display: flex;
@@ -93,6 +84,7 @@ body {
     gap: 1.3rem;
     padding-top: 2rem;
 }
+
 div.title {
     display: grid;
     place-items: center;
@@ -173,25 +165,6 @@ button:hover {
     display: flex;
 }
 
-/* #select-game-mode {
-    display: grid;
-    place-items: center;
-    place-content: center;
-    gap: 2rem;
-    font-size: 2rem;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(
-        to bottom,
-        rgba(20, 20, 29, 0.9),
-        rgba(18, 31, 52, 0.9)
-    );
-} */
-
 /* Update the #select-game-mode styles */
 #select-game-mode {
     display: flex;
@@ -200,9 +173,6 @@ button:hover {
     justify-content: center;
     gap: 2rem;
     font-size: 2rem;
-    /* width: 100%; */
-    /* max-width: 400px; Adjust the max-width as needed */
-    /* height: 100%; */
     width: 100vw;
     height: 100vh;
     position: relative;
@@ -246,40 +216,29 @@ button:hover {
 }
 
 /* For tablet screens */
-@media only screen and (max-width: 900px) {
-    body{
-        justify-content: flex-start;
-        overflow: hidden;
-    }
-    .container {
-        padding: 0;
-        margin-top: 2rem;
-    }
-    #SGMBtns {
+@media only screen and (max-width: 1024px) {
+    #SGMBtns:not(.inGame) {
         display: flex;
         flex-direction: column;
         place-items: center;
         margin-top: 1.5rem;
     }
-    #SGMBtns button {
+    #SGMBtns:not(.inGame) button {
         width: 100%;
     }
+    .inGame button {
+        height: fit-content;
+        padding: 0.4rem 0.5rem;
+        font-size: 1.2rem;
+        margin: 0.3rem 0.8rem;
+    }
     .board {
-        width: 20rem;
-    }
-    .title h1 {
-        font-size: 2.5rem;
-    }
-    .title h2 {
-        font-size: 1.8rem;
-    }
-    .title h3 {
-        font-size: 1.5rem;
+        width: 16rem;
     }
     #displayScore .fa-x {
-        width: 1.3rem;
+        width: 1.1rem;
     }
     #displayScore .fa-o {
-        width: 1.6rem;
+        width: 1.3rem;
     }
 }

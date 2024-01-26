@@ -71,7 +71,7 @@ const GameVsMiniMax = () => {
         <>
             <StatsBar />
             <Board handleClick={handleClick} />
-            <div className="btn-group" id="SGMBtns">
+            <div className="btn-group inGame" id="SGMBtns">
                 <button onClick={() => dispatch({ type: "RESET_GAME" })}>
                     <span className="fa-desktop"></span>
                     <h4>Play Again !</h4>

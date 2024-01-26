@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { GameStateContext } from "../Context/GameStateContext";
-import { useContext } from "react"; // Import useEffect
+import { useContext } from "react";
 
 const BackToMenu = () => {
     const navigate = useNavigate();

@@ -5,7 +5,7 @@ import App from "./App.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <BrowserRouter basename="/TicTacToe-React">
+        <BrowserRouter basename="/TicTacToe-React/">
             <App />
         </BrowserRouter>
     </React.StrictMode>,

@@ -16,13 +16,21 @@
     text-transform: capitalize;
     text-align: center;
     text-decoration: none;
+    /* overflow: hidden; */
 }
-
+html {
+    height: 100%;
+}
 body {
-    display: grid;
-    place-items: center;
+    height: 100%;
+    /* display: grid;*/
     background-color: var(--dark-color);
-    min-height: 100vh;
+    /* Update the body styles to use flex for responsiveness */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
 }
 /***** End Global styles *****/
 
@@ -30,7 +38,7 @@ body {
 .board {
     display: flex;
     flex-wrap: wrap;
-    width: 300px;
+    width: 20rem;
     aspect-ratio: 1/1;
     border: 1px solid var(--white-color);
     border-radius: 0.7rem;
@@ -40,7 +48,7 @@ body {
 
 /***** cell styles *****/
 .cell {
-    width: calc(300px / 3);
+    width: calc(20rem / 3);
     border: 1px solid var(--white-color);
     aspect-ratio: 1/1;
     display: grid;
@@ -70,20 +78,25 @@ body {
 }
 /***** End cell styles *****/
 
-/***** not Used *****/
-
-.container {
+/* .container {
     display: grid;
     place-items: center;
-    gap: 1.5rem;
-    padding: 2rem;
-}
+    gap: 1.3rem;
+    padding-top: 2rem;
+} */
 
+/* Update the container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.3rem;
+    padding-top: 2rem;
+}
 div.title {
     display: grid;
     place-items: center;
-    gap: 1rem;
-    place-content: center;
+    gap: 0.75rem;
 }
 
 button {
@@ -103,8 +116,6 @@ button:hover {
 }
 
 #SGMBtns {
-    place-content: center;
-    place-items: center;
     gap: 1rem;
 }
 #SGMBtns button {
@@ -112,7 +123,7 @@ button:hover {
 }
 
 .playerIcon {
-    width: 3.125rem;
+    width: 3.5rem;
     aspect-ratio: 1/1;
 }
 
@@ -139,36 +150,35 @@ button:hover {
 .fa-desktop,
 .fa-shuffle,
 .fa-user {
-    width: 50px;
-    margin-right: 5px;
+    width: 3rem;
+    margin-right: 0.3rem;
     aspect-ratio: 1/1;
 }
 
 #displayScore .fa-o,
 #playerTurn .fa-o {
     width: 1.1rem;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 0.3125rem;
     aspect-ratio: 1/1;
 }
 
 #displayScore .fa-x,
 #playerTurn .fa-x {
     width: 1rem;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 0.3125rem;
     aspect-ratio: 1/1;
 }
+
 .title * {
     display: flex;
 }
 
-#select-game-mode {
+/* #select-game-mode {
     display: grid;
     place-items: center;
     place-content: center;
     gap: 2rem;
-    font-size: 4rem;
+    font-size: 2rem;
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -180,11 +190,29 @@ button:hover {
         rgba(20, 20, 29, 0.9),
         rgba(18, 31, 52, 0.9)
     );
+} */
+
+/* Update the #select-game-mode styles */
+#select-game-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 2rem;
+    /* width: 100%; */
+    /* max-width: 400px; Adjust the max-width as needed */
+    /* height: 100%; */
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        rgba(20, 20, 29, 0.9),
+        rgba(18, 31, 52, 0.9)
+    );
 }
 
-#select-game-mode {
-    font-size: 2rem;
-}
 #winningMessage {
     background: none;
     font-size: 4rem;
@@ -203,10 +231,6 @@ button:hover {
     gap: 3rem;
 }
 
-[data-side] {
-    padding: 1rem 3rem;
-}
-
 .btn-group {
     display: flex;
 }
@@ -221,4 +245,41 @@ button:hover {
     width: 100%;
 }
 
-/***** End not Used *****/
+/* For tablet screens */
+@media only screen and (max-width: 900px) {
+    body{
+        justify-content: flex-start;
+        overflow: hidden;
+    }
+    .container {
+        padding: 0;
+        margin-top: 2rem;
+    }
+    #SGMBtns {
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        margin-top: 1.5rem;
+    }
+    #SGMBtns button {
+        width: 100%;
+    }
+    .board {
+        width: 20rem;
+    }
+    .title h1 {
+        font-size: 2.5rem;
+    }
+    .title h2 {
+        font-size: 1.8rem;
+    }
+    .title h3 {
+        font-size: 1.5rem;
+    }
+    #displayScore .fa-x {
+        width: 1.3rem;
+    }
+    #displayScore .fa-o {
+        width: 1.6rem;
+    }
+}

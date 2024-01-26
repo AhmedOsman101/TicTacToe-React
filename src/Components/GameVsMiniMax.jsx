@@ -64,7 +64,7 @@ const GameVsMiniMax = () => {
                 OScore: 0.5,
             });
         }
-        console.table(gameState);
+        // console.table(gameState);
     }, [gameState]);
 
     return (

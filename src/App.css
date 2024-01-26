@@ -227,6 +227,10 @@ button:hover {
     #SGMBtns:not(.inGame) button {
         width: 100%;
     }
+    #SGMBtns {
+        justify-content: stretch;
+        height: 100%;
+    }
     .inGame button {
         height: fit-content;
         font-size: 1.2rem;

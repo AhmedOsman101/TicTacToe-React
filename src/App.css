@@ -231,7 +231,7 @@ button:hover {
         height: fit-content;
         font-size: 1.2rem;
         margin: 0.3rem 0.8rem;
-        padding: 0.4rem 0.5rem;
+        padding: 0.5rem;
     }
     .board {
         width: 16rem;

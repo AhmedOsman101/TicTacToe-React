@@ -23,13 +23,15 @@ const GameVsMiniMax = () => {
     useEffect(() => {
         // If it's not X's turn and the game hasn't ended, make the AI's move
         if (!gameState.XTurn && !gameState.gameEnded) {
-            let newBoard = AIMove(gameState.board);
-            if (
-                newBoard &&
-                newBoard.toString() !== gameState.board.toString()
-            ) {
-                dispatch({ type: "MAKE_MOVE", newBoard: newBoard });
-            }
+            setTimeout(() => {
+                let newBoard = AIMove(gameState.board);
+                if (
+                    newBoard &&
+                    newBoard.toString() !== gameState.board.toString()
+                ) {
+                    dispatch({ type: "MAKE_MOVE", newBoard: newBoard });
+                }
+            }, 500);
         }
 
         // Check for a winner or draw

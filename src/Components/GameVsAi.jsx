@@ -31,13 +31,15 @@ const GameVsAi = () => {
             !gameState.gameEnded &&
             !isWinner(gameState.board, "X")
         ) {
-            let newBoard = randomAi(gameState.board, gameState.gameEnded);
-            if (
-                newBoard &&
-                newBoard.toString() !== gameState.board.toString()
-            ) {
-                dispatch({ type: "MAKE_MOVE", newBoard: newBoard });
-            }
+            setTimeout(() => {
+                let newBoard = randomAi(gameState.board, gameState.gameEnded);
+                if (
+                    newBoard &&
+                    newBoard.toString() !== gameState.board.toString()
+                ) {
+                    dispatch({ type: "MAKE_MOVE", newBoard: newBoard });
+                }
+            }, 500);
         }
 
         // Check for a winner or draw

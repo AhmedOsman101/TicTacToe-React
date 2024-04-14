@@ -1,7 +1,7 @@
 /* Dependencies */
 import { GameStateContext } from "../Context/GameStateContext";
 import { useContext, useEffect } from "react"; // Import useEffect
-import { playerMove, randomAi, isWinner, isDraw } from "./gameLogic";
+import { playerMove, randomAi, isWinner, isDraw } from "../lib/gameLogic.js";
 /* Assets */
 import Board from "./Board";
 import StatsBar from "./StatsBar";

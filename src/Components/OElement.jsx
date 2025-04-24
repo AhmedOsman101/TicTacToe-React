@@ -1,5 +1,5 @@
 const OElement = () => {
-    return <div className="fa-o playerIcon"></div>;
+  return <div className="fa-o playerIcon" />;
 };
 
 export default OElement;

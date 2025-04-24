@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
-import { GameStateContext } from "../Context/GameStateContext";
+import { GameStateContext } from "../Context/GameStateContext.jsx";
 import { isDraw, isWinner, playerMove } from "../lib/gameLogic.js";
-import BackToMenu from "./BackToMenu";
-import Board from "./Board";
-import StatsBar from "./StatsBar";
+import BackToMenu from "./BackToMenu.jsx";
+import Board from "./Board.jsx";
+import StatsBar from "./StatsBar.jsx";
 
 const GameVsPlayer = () => {
   const { gameState, dispatch } = useContext(GameStateContext);
@@ -65,7 +65,7 @@ const GameVsPlayer = () => {
       <StatsBar />
       <Board handleClick={handleClick} />
       <div className="btn-group inGame" id="SGMBtns">
-        <button onClick={() => dispatch({ type: "RESET_GAME" })}>
+        <button type="button" onClick={() => dispatch({ type: "RESET_GAME" })}>
           <span className="fa-user" />
           <h4>Play Again !</h4>
         </button>

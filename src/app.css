@@ -1,0 +1,179 @@
+@import "./index.css";
+
+/***** Global styles *****/
+* {
+  color: var(--white-color);
+}
+
+#root {
+  /* background-color: var(--dark-color); */
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 20, 29, 0.9),
+    rgba(18, 31, 52, 0.9)
+  );
+
+  @apply flex flex-col items-center justify-center w-full min-h-dvh;
+}
+/***** End Global styles *****/
+
+/***** Board styles *****/
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  @apply border w-xl rounded-xl h-full items-center justify-center;
+}
+/***** End Board styles *****/
+
+/***** cell styles *****/
+.cell {
+  /* width: 30%; */
+  @apply aspect-square grid place-items-center cursor-pointer border-r border-b;
+}
+
+/****** Dynamic tic-tac-toe borders ******/
+/* Remove right border from last column */
+.cell:nth-child(3n) {
+  border-right: none;
+}
+
+/* Remove bottom border from last row */
+.cell:nth-last-child(-n + 3) {
+  border-bottom: none;
+}
+/***** End cell styles *****/
+
+/* Update the container styles */
+.container {
+  @apply flex flex-col items-center gap-5;
+}
+
+div.title {
+  @apply grid place-items-center gap-3;
+}
+
+button {
+  @apply cursor-pointer text-xl p-3 mx-4 my-2 rounded-lg;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+  background-color: var(--btn-color);
+}
+
+button:hover {
+  background-color: var(--navy-color);
+  @apply hover:-translate-y-1;
+}
+
+#SGMBtns button {
+  @apply flex;
+}
+
+.playerIcon {
+  @apply w-14 aspect-square;
+}
+
+.fa-x {
+  background: url("assets/svgs/x.svg") no-repeat center;
+}
+
+.fa-o {
+  background: url("assets/svgs/o.svg") no-repeat center;
+}
+
+.fa-desktop {
+  background: url("assets/svgs/desktop.svg") no-repeat center;
+}
+
+.fa-shuffle {
+  background: url("assets/svgs/shuffle.svg") no-repeat center;
+}
+
+.fa-user {
+  background: url("assets/svgs/user.svg") no-repeat center;
+}
+
+.fa-desktop,
+.fa-shuffle,
+.fa-user {
+  @apply w-12 mr-1.5 aspect-square;
+}
+
+#displayScore .fa-o,
+#playerTurn .fa-o {
+  @apply w-4 mx-1.5 aspect-square;
+}
+
+#displayScore .fa-x,
+#playerTurn .fa-x {
+  @apply w-4 mx-1.5 aspect-square;
+}
+
+.title * {
+  @apply flex;
+}
+
+/* Update the #select-game-mode styles */
+#select-game-mode {
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 20, 29, 0.9),
+    rgba(18, 31, 52, 0.9)
+  );
+  @apply flex flex-col items-center justify-center gap-4 text-3xl w-dvw h-dvh relative;
+}
+
+#winningMessage {
+  @apply flex gap-8 text-6xl;
+  background: none;
+}
+
+.text-boxes {
+  @apply grid gap-4;
+}
+
+#selectSide {
+  @apply grid place-items-center gap-12;
+}
+
+.btn-group {
+  @apply flex;
+}
+
+.btn-group button {
+  @apply flex items-center w-max;
+}
+.btn-group button h4 {
+  @apply inline-block w-full;
+}
+
+/* For tablet screens */
+/* @media only screen and (max-width: 1024px) {
+  #SGMBtns:not(.inGame) {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: stretch;
+    margin-top: 1.5rem;
+  }
+  #SGMBtns:not(.inGame) button {
+    width: 100%;
+  }
+  #SGMBtns {
+    justify-content: stretch;
+    height: 100%;
+  }
+  .inGame button {
+    height: fit-content;
+    font-size: 1.2rem;
+    margin: 0.3rem 0.8rem;
+    padding: 0.5rem;
+  }
+  .board {
+    width: 16rem;
+  }
+  #displayScore .fa-x {
+    width: 1.1rem;
+  }
+  #displayScore .fa-o {
+    width: 1.3rem;
+  }
+} */

@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color-scheme: light dark;
+  --dark-color: #121818;
+  --white-color: #e4dddd;
+  --navy-color: #121f34;
+  --btn-color: #13274a;
+}

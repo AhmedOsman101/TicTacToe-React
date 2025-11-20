@@ -5,6 +5,7 @@ import { gameStateAtom } from "@/lib/atoms";
 import { isDraw, isWinner, makeMove } from "@/lib/gameLogic";
 import BackToMenu from "./BackToMenu";
 import Board from "./Board";
+import UserIcon from "./icons/UserIcon";
 import StatsBar from "./StatsBar";
 
 function GameVsPlayer() {
@@ -44,8 +45,8 @@ function GameVsPlayer() {
       <StatsBar />
       <Board clickAction={handleClick} />
       <div className="btn-group inGame gap-4" id="SGMBtns">
-        <button onClick={actions.resetGame} type="button">
-          <span className="fa-user" />
+        <button className="button" onClick={actions.resetGame} type="button">
+          <UserIcon />
           <h4>Play Again !</h4>
         </button>
         <BackToMenu />

@@ -10,10 +10,18 @@ const ChooseDifficulty = () => {
       <div id="selectSide">
         <h3>Choose Difficulty</h3>
         <div className="btn-group gap-4" id="SGMBtns">
-          <button onClick={() => navigate("/GameVsAi/Beginner")} type="button">
+          <button
+            className="button"
+            onClick={() => navigate("/GameVsAi/Beginner")}
+            type="button"
+          >
             <h4>Beginner 🤙🏻</h4>
           </button>
-          <button onClick={() => navigate("/GameVsAi/Advanced")} type="button">
+          <button
+            className="button"
+            onClick={() => navigate("/GameVsAi/Advanced")}
+            type="button"
+          >
             <h4>Hardcore 💀</h4>
           </button>
         </div>

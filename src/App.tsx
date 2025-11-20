@@ -7,7 +7,7 @@ import MainMenu from "./components/MainMenu";
 
 function App() {
   return (
-    <div className="container">
+    <div className="flex flex-col items-center gap-5">
       <Routes>
         <Route Component={GameVsPlayer} path="/GameVsPlayer/" />
         <Route Component={ChooseDifficulty} path="/GameVsAi/" />

@@ -10,7 +10,7 @@ function BackToMenu() {
   }
 
   return (
-    <button onClick={handleClick} type="button">
+    <button className="button" onClick={handleClick} type="button">
       Back To Main Menu
     </button>
   );

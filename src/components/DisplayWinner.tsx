@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { gameStateAtom } from "@/lib/atoms";
-import OElement from "./OElement";
-import XElement from "./XElement";
+import OIcon from "./icons/OIcon";
+import XIcon from "./icons/XIcon";
 
 const DisplayWinner = () => {
   const [gameState] = useAtom(gameStateAtom);
@@ -12,8 +12,8 @@ const DisplayWinner = () => {
 
   if (gameState.winner) {
     return (
-      <h3 id="playerTurn">
-        Player {gameState.winner === "X" ? <XElement /> : <OElement />} Won!
+      <h3 className="flex" id="playerTurn">
+        Player {gameState.winner === "X" ? <XIcon /> : <OIcon />} Won!
       </h3>
     );
   }

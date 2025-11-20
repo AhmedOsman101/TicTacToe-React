@@ -5,6 +5,7 @@ import { gameStateAtom } from "@/lib/atoms";
 import { AIMove, isDraw, isWinner, makeMove } from "@/lib/gameLogic";
 import BackToMenu from "./BackToMenu";
 import Board from "./Board";
+import DesktopIcon from "./icons/DesktopIcon";
 import StatsBar from "./StatsBar";
 
 function GameVsMiniMax() {
@@ -59,8 +60,8 @@ function GameVsMiniMax() {
       <StatsBar />
       <Board clickAction={handleClick} />
       <div className="btn-group inGame gap-4" id="SGMBtns">
-        <button onClick={actions.resetGame} type="button">
-          <span className="fa-desktop" />
+        <button className="button" onClick={actions.resetGame} type="button">
+          <DesktopIcon />
           <h4>Play Again !</h4>
         </button>
         <BackToMenu />

@@ -4,7 +4,7 @@ import Cell from "./Cell";
 
 type Props = {
   clickAction: (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     index: number
   ) => void;
 };
@@ -13,7 +13,7 @@ const Board = ({ clickAction }: Props) => {
   const [gameState] = useAtom(gameStateAtom);
 
   return (
-    <div className="board">
+    <div className="grid h-full w-xl grid-cols-3 items-center justify-center rounded-xl border">
       {gameState.board.map((cell, i) => (
         <Cell
           clickAction={e => clickAction(e, i)}

@@ -1,14 +1,14 @@
 import { useAtom } from "jotai";
 import { gameStateAtom } from "@/lib/atoms";
-import OElement from "./OElement";
-import XElement from "./XElement";
+import OIcon from "./icons/OIcon";
+import XIcon from "./icons/XIcon";
 
 function DisplayTurns() {
   const [gameState] = useAtom(gameStateAtom);
   return (
-    <h3 id="playerTurn">
+    <h3 className="flex" id="playerTurn">
       Player
-      {gameState.XTurn ? <XElement /> : <OElement />} turn
+      {gameState.XTurn ? <XIcon /> : <OIcon />} turn
     </h3>
   );
 }

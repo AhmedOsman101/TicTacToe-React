@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router";
+import DesktopIcon from "./icons/DesktopIcon";
+import ShuffleIcon from "./icons/ShuffleIcon";
+import UserIcon from "./icons/UserIcon";
 
 function MainMenu() {
   const navigate = useNavigate();
@@ -16,16 +19,24 @@ function MainMenu() {
       <div id="selectSide">
         <h3>Select Game Mode</h3>
         <div className="btn-group gap-4" id="SGMBtns">
-          <button onClick={() => navigate("/GameVsAi/")} type="button">
-            <span className="fa-desktop" />
+          <button
+            className="button"
+            onClick={() => navigate("/GameVsAi/")}
+            type="button"
+          >
+            <DesktopIcon />
             <h4>Player vs Computer</h4>
           </button>
-          <button onClick={() => navigate("/GameVsPlayer/")} type="button">
-            <span className="fa-user" />
+          <button
+            className="button"
+            onClick={() => navigate("/GameVsPlayer/")}
+            type="button"
+          >
+            <UserIcon />
             <h4>Player vs Player</h4>
           </button>
-          <button onClick={decideGameMode} type="button">
-            <span className="fa-shuffle" />
+          <button className="button" onClick={decideGameMode} type="button">
+            <ShuffleIcon />
             <h4>Random Game</h4>
           </button>
         </div>

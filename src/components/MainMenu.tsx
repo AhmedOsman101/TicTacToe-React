@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
-import DesktopIcon from "./icons/DesktopIcon";
-import ShuffleIcon from "./icons/ShuffleIcon";
-import UserIcon from "./icons/UserIcon";
+import DesktopIcon from "@/components/icons/DesktopIcon";
+import ShuffleIcon from "@/components/icons/ShuffleIcon";
+import UserIcon from "@/components/icons/UserIcon";
 
 function MainMenu() {
   const navigate = useNavigate();
@@ -12,15 +12,15 @@ function MainMenu() {
   }
 
   return (
-    <div id="select-game-mode">
-      <div className="text-boxes">
-        <h1>TIC-TAC-TOE</h1>
+    <div className="relative flex h-dvh w-dvw flex-col items-center justify-center gap-4 text-3xl">
+      <div className="grid gap-4">
+        <h1 className="font-bold text-2xl">Tic Tac Toe</h1>
       </div>
-      <div id="selectSide">
+      <div className="grid place-items-center gap-12">
         <h3>Select Game Mode</h3>
-        <div className="btn-group gap-4" id="SGMBtns">
+        <div className="flex gap-4">
           <button
-            className="button"
+            className="button flex w-max items-center"
             onClick={() => navigate("/GameVsAi/")}
             type="button"
           >
@@ -28,14 +28,18 @@ function MainMenu() {
             <h4>Player vs Computer</h4>
           </button>
           <button
-            className="button"
+            className="button flex w-max items-center"
             onClick={() => navigate("/GameVsPlayer/")}
             type="button"
           >
             <UserIcon />
             <h4>Player vs Player</h4>
           </button>
-          <button className="button" onClick={decideGameMode} type="button">
+          <button
+            className="button flex w-max items-center"
+            onClick={decideGameMode}
+            type="button"
+          >
             <ShuffleIcon />
             <h4>Random Game</h4>
           </button>

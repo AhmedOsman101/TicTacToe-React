@@ -1,19 +1,25 @@
 import { useAtom } from "jotai";
+import OIcon from "@/components/icons/OIcon";
+import XIcon from "@/components/icons/XIcon";
 import { gameStateAtom } from "@/lib/atoms";
-import OIcon from "./icons/OIcon";
-import XIcon from "./icons/XIcon";
 
 const DisplayWinner = () => {
   const [gameState] = useAtom(gameStateAtom);
 
   if (gameState.isDraw) {
-    return <h3 id="playerTurn">It's a draw!</h3>;
+    return <h3>It's a draw!</h3>;
   }
 
   if (gameState.winner) {
     return (
-      <h3 className="flex" id="playerTurn">
-        Player {gameState.winner === "X" ? <XIcon /> : <OIcon />} Won!
+      <h3 className="flex">
+        Player{" "}
+        {gameState.winner === "X" ? (
+          <XIcon className="mx-1.5 w-5" />
+        ) : (
+          <OIcon className="mx-1.5 w-6" />
+        )}{" "}
+        Won!
       </h3>
     );
   }

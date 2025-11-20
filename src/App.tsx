@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router";
-import ChooseDifficulty from "./components/ChooseDifficulty";
-import GameVsAi from "./components/GameVsAi";
-import GameVsMiniMax from "./components/GameVsMiniMax";
-import GameVsPlayer from "./components/GameVsPlayer";
-import MainMenu from "./components/MainMenu";
+import ChooseDifficulty from "@/components/ChooseDifficulty";
+import GameVsAi from "@/components/GameVsAi";
+import GameVsMiniMax from "@/components/GameVsMiniMax";
+import GameVsPlayer from "@/components/GameVsPlayer";
+import MainMenu from "@/components/MainMenu";
 
 function App() {
   return (

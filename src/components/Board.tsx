@@ -13,7 +13,7 @@ const Board = ({ clickAction }: Props) => {
   const [gameState] = useAtom(gameStateAtom);
 
   return (
-    <div className="grid h-full w-xl grid-cols-3 items-center justify-center rounded-xl border">
+    <div className="grid w-lg grid-cols-3 items-center justify-center rounded-xl border">
       {gameState.board.map((cell, i) => (
         <Cell
           clickAction={e => clickAction(e, i)}

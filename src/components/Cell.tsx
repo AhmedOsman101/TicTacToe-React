@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
+import OIcon from "@/components/icons/OIcon";
+import XIcon from "@/components/icons/XIcon";
 import { gameStateAtom } from "@/lib/atoms";
 import type { Player } from "@/lib/types";
-import OIcon from "./icons/OIcon";
-import XIcon from "./icons/XIcon";
 
 type Props = {
   item: Player;

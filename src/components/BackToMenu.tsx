@@ -10,7 +10,11 @@ function BackToMenu() {
   }
 
   return (
-    <button className="button" onClick={handleClick} type="button">
+    <button
+      className="button flex w-max items-center"
+      onClick={handleClick}
+      type="button"
+    >
       Back To Main Menu
     </button>
   );

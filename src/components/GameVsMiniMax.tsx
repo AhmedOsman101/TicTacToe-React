@@ -1,11 +1,11 @@
 import { useAtom } from "jotai";
 import { useEffect } from "react";
+import DesktopIcon from "@/components/icons/DesktopIcon";
 import { useGameActions } from "@/hooks/use-game-actions";
 import { gameStateAtom } from "@/lib/atoms";
 import { AIMove, isDraw, isWinner, makeMove } from "@/lib/gameLogic";
 import BackToMenu from "./BackToMenu";
 import Board from "./Board";
-import DesktopIcon from "./icons/DesktopIcon";
 import StatsBar from "./StatsBar";
 
 function GameVsMiniMax() {
@@ -59,8 +59,12 @@ function GameVsMiniMax() {
     <>
       <StatsBar />
       <Board clickAction={handleClick} />
-      <div className="btn-group inGame gap-4" id="SGMBtns">
-        <button className="button" onClick={actions.resetGame} type="button">
+      <div className="inGame flex gap-4">
+        <button
+          className="button flex w-max items-center"
+          onClick={actions.resetGame}
+          type="button"
+        >
           <DesktopIcon />
           <h4>Play Again !</h4>
         </button>

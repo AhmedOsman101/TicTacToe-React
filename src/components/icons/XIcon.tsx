@@ -1,7 +1,7 @@
 function XIcon(props: React.SVGAttributes<SVGElement>) {
   return (
     <svg
-      className="fa-x inline-block aspect-square w-14"
+      className="inline-block aspect-square w-14"
       fill="#09c372"
       viewBox="0 0 384 512"
       xmlns="http://www.w3.org/2000/svg"

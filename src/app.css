@@ -1,4 +1,18 @@
-@import "./index.css";
+@import "tailwindcss";
+
+:root {
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color-scheme: light dark;
+  --dark-color: #121818;
+  --white-color: #e4dddd;
+  --navy-color: #121f34;
+  --btn-color: #13274a;
+}
 
 /***** Global styles *****/
 * {
@@ -39,84 +53,3 @@
   background-color: var(--navy-color);
   @apply hover:-translate-y-1;
 }
-
-#SGMBtns button {
-  @apply flex;
-}
-
-#displayScore .fa-o,
-#playerTurn .fa-o {
-  @apply w-6 mx-1.5;
-}
-
-#displayScore .fa-x,
-#playerTurn .fa-x {
-  @apply w-5 mx-1.5;
-}
-
-/* Update the #select-game-mode styles */
-#select-game-mode {
-  background: linear-gradient(
-    to bottom,
-    rgba(20, 20, 29, 0.9),
-    rgba(18, 31, 52, 0.9)
-  );
-  @apply flex flex-col items-center justify-center gap-4 text-3xl w-dvw h-dvh relative;
-}
-
-#winningMessage {
-  @apply flex gap-8 text-6xl;
-  background: none;
-}
-
-.text-boxes {
-  @apply grid gap-4;
-}
-
-#selectSide {
-  @apply grid place-items-center gap-12;
-}
-
-.btn-group {
-  @apply flex;
-}
-
-.btn-group button {
-  @apply flex items-center w-max;
-}
-.btn-group button h4 {
-  @apply inline-block w-full;
-}
-
-/* For tablet screens */
-/* @media only screen and (max-width: 1024px) {
-  #SGMBtns:not(.inGame) {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    justify-content: stretch;
-    margin-top: 1.5rem;
-  }
-  #SGMBtns:not(.inGame) button {
-    width: 100%;
-  }
-  #SGMBtns {
-    justify-content: stretch;
-    height: 100%;
-  }
-  .inGame button {
-    height: fit-content;
-    font-size: 1.2rem;
-    margin: 0.3rem 0.8rem;
-    padding: 0.5rem;
-  }
-  .board {
-    width: 16rem;
-  }
-  #displayScore .fa-x {
-    width: 1.1rem;
-  }
-  #displayScore .fa-o {
-    width: 1.3rem;
-  }
-} */

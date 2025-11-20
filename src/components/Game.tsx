@@ -1,49 +1,64 @@
 import { useAtom } from "jotai";
+import { MonitorIcon as DesktopIcon, UserIcon } from "lucide-react";
 import { useEffect } from "react";
-import DesktopIcon from "@/components/icons/DesktopIcon";
 import { useGameActions } from "@/hooks/use-game-actions";
 import { gameStateAtom } from "@/lib/atoms";
-import { isDraw, isWinner, makeMove, randomAi } from "@/lib/gameLogic";
+import {
+  isDraw,
+  isWinner,
+  makeMove,
+  miniMaxMove,
+  randomMove,
+} from "@/lib/gameLogic";
 import BackToMenu from "./BackToMenu";
 import Board from "./Board";
 import StatsBar from "./StatsBar";
 
-// Main game component
-function GameVsAi() {
+type Props = {
+  variant: "minimax" | "random" | "player";
+};
+
+function Game({ variant }: Props) {
   const [gameState] = useAtom(gameStateAtom);
   const actions = useGameActions();
 
   function handleClick(e: React.MouseEvent, index: number) {
     e.preventDefault();
+
+    const side = gameState.XTurn ? "X" : "O";
     if (gameState.gameEnded) return;
 
-    if (gameState.XTurn) {
-      const newBoard = makeMove([...gameState.board], index, "X");
-      if (newBoard) actions.makeMove(newBoard);
+    if (side === "X" || variant === "player") {
+      const newBoard = makeMove([...gameState.board], index, side);
+      if (newBoard) {
+        actions.makeMove(newBoard);
+      }
     }
   }
 
   useEffect(() => {
-    // If it's not X's turn and the game hasn't ended, make the AI's move
-    if (
-      !gameState.XTurn &&
-      !gameState.gameEnded &&
-      !isWinner(gameState.board, "X")
-    ) {
-      setTimeout(() => {
-        const newBoard = randomAi([...gameState.board]);
-        if (newBoard && newBoard.toString() !== gameState.board.toString()) {
-          actions.makeMove(newBoard);
-        }
-      }, 500);
-    }
-
-    // Check for a winner or draw
     const winner = isWinner(gameState.board, "X")
       ? "X"
       : isWinner(gameState.board, "O")
         ? "O"
         : false;
+
+    // If it's a game vs ai and the game hasn't ended, make the AI's move
+    if (variant !== "player" && !winner) {
+      if (!gameState.XTurn && !gameState.gameEnded) {
+        setTimeout(() => {
+          const newBoard =
+            variant === "random"
+              ? randomMove([...gameState.board])
+              : miniMaxMove([...gameState.board]);
+          if (newBoard && newBoard.toString() !== gameState.board.toString()) {
+            actions.makeMove(newBoard);
+          }
+        }, 500);
+      }
+    }
+
+    // Check for a winner or draw
     if (winner && winner !== gameState.winner) {
       actions.endGame(winner);
       winner === "X" ? actions.updateScores(1, 0) : actions.updateScores(0, 1);
@@ -57,6 +72,7 @@ function GameVsAi() {
     actions.draw,
     actions.endGame,
     actions.makeMove,
+    variant,
   ]);
 
   return (
@@ -69,8 +85,12 @@ function GameVsAi() {
           onClick={actions.resetGame}
           type="button"
         >
-          <DesktopIcon />
-          <h4>Play Again !</h4>
+          {variant === "player" ? (
+            <UserIcon className="mr-2 size-7" />
+          ) : (
+            <DesktopIcon className="mr-2 size-7 pt-1" />
+          )}
+          <p>Play Again!</p>
         </button>
         <BackToMenu />
       </div>
@@ -78,4 +98,4 @@ function GameVsAi() {
   );
 }
 
-export default GameVsAi;
+export default Game;

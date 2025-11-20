@@ -49,7 +49,7 @@ function isDraw(board: Board) {
   return !xWon && !oWon && board.every(cell => cell);
 }
 
-function AIMove(board: Board, side: Side = "O") {
+function miniMaxMove(board: Board, side: Side = "O") {
   let bestScore = NEGA_INF;
   let bestMove = -1;
 
@@ -103,7 +103,7 @@ function minimax(board: Board, side: Side, isMaximizing: boolean, depth = 0) {
   return bestScore;
 }
 
-function randomAi(board: Board) {
+function randomMove(board: Board) {
   // If the game has ended, don't play anymore
   if (board.every(cell => cell)) return;
 
@@ -116,4 +116,4 @@ function randomAi(board: Board) {
   return board;
 }
 
-export { AIMove, WINNING_COMBOS, isDraw, isWinner, makeMove, randomAi };
+export { miniMaxMove, WINNING_COMBOS, isDraw, isWinner, makeMove, randomMove };

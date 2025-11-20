@@ -10,12 +10,14 @@
     "preview": "vite preview",
     "prepare": "husky || true",
     "format": "biome check --fix .",
-    "format:unsafe": "biome check --fix --unsafe ."
+    "format:unsafe": "biome check --fix --unsafe .",
+    "typecheck": "tsc --noUnusedLocals false --noUnusedParameters false --noEmit"
   },
   "dependencies": {
     "immer": "^10.2.0",
     "jotai": "^2.15.1",
     "jotai-immer": "^0.4.1",
+    "lucide-react": "^0.554.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.9.6"

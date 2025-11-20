@@ -1,10 +1,10 @@
 import { useId } from "react";
 
-function ShuffleIcon(props: React.SVGAttributes<SVGElement>) {
+function ShuffleIcon({ className, ...props }: React.SVGAttributes<SVGElement>) {
   const id = useId();
   return (
     <svg
-      className="mr-1.5 size-12 fill-none"
+      className={`mr-1.5 size-12 fill-none ${className}`}
       viewBox="0 0 36 31"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -22,8 +22,8 @@ function ShuffleIcon(props: React.SVGAttributes<SVGElement>) {
           y1="6.42437e-07"
           y2="31"
         >
-          <stop stop-color="#498AFB" />
-          <stop offset="1" stop-color="#09C372" />
+          <stop stopColor="#498AFB" />
+          <stop offset="1" stopColor="#09C372" />
         </linearGradient>
       </defs>
     </svg>

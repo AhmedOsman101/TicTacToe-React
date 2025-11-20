@@ -1,19 +1,19 @@
 import { Route, Routes } from "react-router";
 import ChooseDifficulty from "@/components/ChooseDifficulty";
-import GameVsAi from "@/components/GameVsAi";
-import GameVsMiniMax from "@/components/GameVsMiniMax";
-import GameVsPlayer from "@/components/GameVsPlayer";
+import Game from "@/components/Game";
 import MainMenu from "@/components/MainMenu";
 
 function App() {
   return (
     <div className="flex flex-col items-center gap-5">
       <Routes>
-        <Route Component={GameVsPlayer} path="/GameVsPlayer/" />
-        <Route Component={ChooseDifficulty} path="/GameVsAi/" />
-        <Route Component={GameVsAi} path="/GameVsAi/Beginner" />
-        <Route Component={GameVsMiniMax} path="/GameVsAi/Advanced" />
-        <Route Component={MainMenu} path="/" />
+        <Route Component={MainMenu} index />
+        <Route element={<Game variant="player" />} path="pvp" />
+        <Route path="/ai">
+          <Route Component={ChooseDifficulty} index />
+          <Route element={<Game variant="random" />} path="beginner" />
+          <Route element={<Game variant="minimax" />} path="advanced" />
+        </Route>
       </Routes>
     </div>
   );

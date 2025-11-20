@@ -16,7 +16,10 @@ pnpm exec biome check --fix --no-errors-on-unmatched "${files[@]}" || true
 git add "${files[@]}"
 
 # --- Do type checking before any commit --- #
-printf "\e[34mDoing type checks...\e[0m\n"
-pnpm exec tsc --noUnusedLocals false --noUnusedParameters false --noEmit || exit 1
+printf "\e[38;2;122;162;247m"
+printf "Doing type checks..."
+printf " \e[0m\n"
+
+pnpm typecheck || exit 1
 
 exit 0

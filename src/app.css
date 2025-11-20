@@ -7,7 +7,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  color-scheme: light dark;
+  color-scheme: dark;
   --dark-color: #121818;
   --white-color: #e4dddd;
   --navy-color: #121f34;
@@ -44,7 +44,7 @@
 /***** End cell styles *****/
 
 .button {
-  @apply cursor-pointer text-xl p-3 mx-4 my-2 rounded-lg;
+  @apply cursor-pointer text-xl p-3 mx-4 my-2 rounded-lg transition-all;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
   background-color: var(--btn-color);
 }

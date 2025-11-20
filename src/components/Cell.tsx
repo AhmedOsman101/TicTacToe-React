@@ -1,6 +1,5 @@
 import { useAtom } from "jotai";
-import OIcon from "@/components/icons/OIcon";
-import XIcon from "@/components/icons/XIcon";
+import { CircleIcon as OIcon, XIcon } from "lucide-react";
 import { gameStateAtom } from "@/lib/atoms";
 import type { Player } from "@/lib/types";
 
@@ -20,8 +19,10 @@ function Cell({ item, clickAction, ...rest }: Props) {
       onClick={clickAction as React.MouseEventHandler<HTMLButtonElement>}
       {...rest}
     >
-      {item === "X" && <XIcon />}
-      {item === "O" && <OIcon />}
+      {item === "X" && <XIcon className="size-20" color="#09c372" />}
+      {item === "O" && (
+        <OIcon className="size-14" color="#498afb" strokeWidth={3} />
+      )}
     </button>
   );
 }

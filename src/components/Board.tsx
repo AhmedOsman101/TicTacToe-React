@@ -9,7 +9,7 @@ type Props = {
   ) => void;
 };
 
-const Board = ({ clickAction }: Props) => {
+function Board({ clickAction }: Props) {
   const [gameState] = useAtom(gameStateAtom);
 
   return (
@@ -23,6 +23,6 @@ const Board = ({ clickAction }: Props) => {
       ))}
     </div>
   );
-};
+}
 
 export default Board;

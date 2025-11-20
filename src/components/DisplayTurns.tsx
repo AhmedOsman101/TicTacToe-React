@@ -25,13 +25,13 @@ function DisplayTurns() {
 
   return (
     <h3 className="flex items-center text-lg">
-      Player
+      <span>Player </span>
       {gameState.XTurn ? (
         <XIcon color="#09c372" size={28} strokeWidth={3} />
       ) : (
         <OIcon className="mx-1" color="#498afb" size={24} strokeWidth={3} />
-      )}{" "}
-      turn
+      )}
+      <span> turn</span>
     </h3>
   );
 }
